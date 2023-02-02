@@ -1,0 +1,15 @@
+.sample-canvas {
+    width   : 100vw;
+    height  : 100vh;
+    touch-action: none;
+    cursor:all-scroll;
+  }
+  .continue{
+
+    position: absolute;
+    transform-origin: center;
+    top: 73%;
+    left: 48%;
+
+}
+

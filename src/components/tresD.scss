@@ -1,44 +1,21 @@
-.ui {
+.uiCont{
     position:relative;
-    .space{
-        position :absolute;
-        left:2em;
-        top: 50em;
-        
-        .emo{
-        margin-top:4px;
-        margin-left:2px;
-        font-size:1.2em;
-    }
-    }
-    .a{
-        position :absolute;
-        left:9em;
-        top: 50em;
-        
-        .emo{
-        margin-top:4px;
-        margin-left:4px;
-        font-size:1.2em;
-    }
-    }
-    .d{
-        position :absolute;
-        left:12em;
-        top: 50em;
-        
-        .emo{
-        margin-top:4px;
-        margin-left:4px;
-        font-size:1.2em;
-    }
-    }
+}
 
-   
+.ui {
+  position: absolute;
+  display: flex;
+  bottom: 5%;
+  left: 2%;
+}
+
+.mobile_play{
+    display: none;
+    visibility: hidden;
 }
 
 
-@media(max-width: 992px){
+@media(max-width: 800px){
     .ui {
 
         display:none;
@@ -47,6 +24,8 @@
     }
 
     .mobile_play{
+        display: flex;
+        visibility: visible;
         position: absolute;
         left:45%;
         bottom: 5%;

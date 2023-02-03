@@ -55,7 +55,7 @@ const DemoScene3 = () => {
 
          //MATERIALS
         //IVDEO MATERIAL
-         var vitMat = new VideoTexture("video", "/static/a1a772f8263c9d215ace9578f02a8026/Wth.mp4", scene,  false,
+         var vitMat = new VideoTexture("video", "https://raw.githubusercontent.com/milasantacruz/demo_galeria/main/src/images/Wth.mp4", scene,  false,
          false,
          VideoTexture.TRILINEAR_SAMPLINGMODE,
          {

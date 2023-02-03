@@ -8,7 +8,7 @@ const TresD = () => {
 
 
     return (
-        <div>
+        <div className="uiCont">
             <div className="ui">
 
                <div 

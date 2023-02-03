@@ -1,12 +1,30 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {HemisphericLight} from '@babylonjs/core/Lights/hemisphericLight'
-import {Vector3, PointerEventTypes,VideoTexture,StandardMaterial,UniversalCamera,KeyboardEventTypes} from '@babylonjs/core';
+import {Vector3, PointerEventTypes,VideoTexture,StandardMaterial,UniversalCamera,KeyboardEventTypes, setStereoscopicAnaglyphRigMode} from '@babylonjs/core';
 import {SceneLoader} from '@babylonjs/core/Loading/sceneLoader'
 import SceneComponent from "babylonjs-hook"
 import "@babylonjs/loaders";
 import '@babylonjs/loaders/glTF';
 import "./changetexturescene.scss"
+import "./tresD.scss"
 const DemoScene3 = () => {
+    
+    var[play,setPlay] = useState(false)
+    var anim1=null;
+    
+    var count = false;
+    function handlePlay(){
+        count = !count;
+        if(count){
+            anim1?.play();
+        }else{
+            anim1?.pause();
+        }
+        
+    }
+
+    var numFramesToPlay = 0;
+
     const onSceneReady = async scene =>{
         var camera = new UniversalCamera("camera1", new Vector3(0, 0, 0), scene);
         camera.rotation.y=4.5;
@@ -21,10 +39,10 @@ const DemoScene3 = () => {
         light.intensity = 0.5;
         scene.useRightHandedSystem = true
         
-        var fort = await SceneLoader.ImportMeshAsync("", "https://github.com/milasantacruz/FreakNoize-Studio-2022/blob/f3c4297a966596f44b97b54ab6e0e4c4dadec367/src/images/", "newPlace.gltf", scene);
+        var fort = await SceneLoader.ImportMeshAsync("", "https://raw.githubusercontent.com/milasantacruz/demo_galeria/277282519d41b5f240792060fb2aa7df893f23c8/public/", "newPlace.gltf", scene);
 
         camera.parent = scene.getMeshByName('Sphere');
-        var anim1 = scene.animationGroups[1]
+        anim1 = scene.animationGroups[1]
         camera.radius = 0;
         camera.alpha = 0.2;
         camera.beta = 1.6;
@@ -50,8 +68,7 @@ const DemoScene3 = () => {
         scene.getMeshByName('Cube_primitive3').material = mat
 
         //MOUSE ACTIONS
-        console.log(anim1.to)
-        var numFramesToPlay = 0;
+       
         
         var spaceCount = false;
         scene.onKeyboardObservable.add((kbInfo) => {
@@ -140,11 +157,14 @@ const DemoScene3 = () => {
         
     }
     const onRender = scene => {
-
+   
         
     }
     return (
+       <>
+        <h1 className ="mobile_play" onClick={handlePlay}>⏯️</h1>
         <SceneComponent antialias onSceneReady={onSceneReady}  className={"sample-canvas"} onRender={onRender} />
+       </>
     );
 }
 
